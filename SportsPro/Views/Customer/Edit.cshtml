@@ -1,0 +1,108 @@
+﻿@model CustomerModel
+@{
+    string title = ViewBag.Action + " Customer";
+    ViewData["Title"] = title;
+}
+
+<partial name="_ScriptsPartial" />
+
+<h1>@title</h1>
+
+<form asp-action="Edit" method="post">
+    <div class="row mb-3">
+        <label asp-for="FirstName" class="col-form-label">First Name</label>
+        <div class="col-4">
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="LastName" class="col-form-label">Last Name</label>
+        <div class="col-4">
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Address" class="col-form-label">Address</label>
+        <div class="col-4">
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="City" class="col-form-label">City</label>
+        <div class="col-4">
+            <input asp-for="City" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="State" class="col-form-label">State</label>
+        <div class="col-4">
+            <input asp-for="State" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="ZipCode" class="col-form-label">Postal Code</label>
+        <div class="col-4">
+            <input asp-for="ZipCode" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="ZipCode" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Country" class="col-form-label">Country</label>
+        <div class="col-4">
+            <select asp-items="@(new SelectList(ViewBag.Countries, "Id", "Name"))" asp-for="Country" class="form-select">
+                <option value="">Select a country...</option>
+            </select>
+        </div>
+        <div class="col">
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <div class="col-4">
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Phone" class="form-label">Phone</label>
+        <div class="col-4">
+            <input asp-for="Phone" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+    </div>
+
+    <input type="hidden" asp-for="CustomerModelId" />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-controller="Customer" asp-action="List" class="btn btn-outline-secondary">Cancel</a>
+</form>

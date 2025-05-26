@@ -1,0 +1,38 @@
+﻿@model RegListViewModel
+
+<h2 class="fw-bold pb-1 mb-2">Customer: @Model.Customer[0].FullName</h2>
+<h2 class="fw-bold pb-1 mb-2">Registrations</h2>
+
+@if (Model.Customer[0].Products.Count != 0)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr><th>Product</th><th></th></tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Customer[0].Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Registration" asp-action="Delete" asp-route-id="@product.ProductModelId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-danger mb-2">Customer has no registered products</div>
+}
+
+<h2 class="fw-bold pb-1 mb-2">Product</h2>
+@if(TempData["message"] != null)
+{
+    <div class="text-danger mb-2">@TempData["message"]</div>
+}
+<form action="Register" method="post">
+    <select asp-for="ProductId" asp-items="@(new SelectList(Model.AllProducts, nameof(ProductModel.ProductModelId), nameof(ProductModel.Name)))" class="form-select mb-2"></select>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

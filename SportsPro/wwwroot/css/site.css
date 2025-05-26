@@ -1,0 +1,15 @@
+.row a {
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+footer {
+    border-top: 1px solid black;
+    margin-top: 2rem;
+    padding-left: 0.5rem;
+}
+
+.input-validation-error {
+    border: 2px solid #dc3545;
+    background-color: #faebd7;
+}

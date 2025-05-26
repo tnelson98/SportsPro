@@ -1,0 +1,8 @@
+﻿@model CustomerModel
+
+<h2 class="fw-bold pb-1 mb-2">Get Customer</h2>
+
+<form asp-action="List" method="post" class="mb-2">
+    <select asp-for="CustomerModelId" asp-items="@(new SelectList(ViewBag.Customers, "CustomerModelId", "FullName"))" class="form-select mb-2"></select>
+    <button type="submit" class="btn btn-primary">Select</button>
+</form>

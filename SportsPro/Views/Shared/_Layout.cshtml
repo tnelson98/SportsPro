@@ -1,0 +1,56 @@
+﻿@{
+    string c = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    string a = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha-long-hash_code" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    @RenderSection("scripts", required:false)
+</head>
+<body class="container-fluid">
+    <!-- Updated navbar by Mackenzie Sexton -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container-fluid">
+            <p class="navbar-brand">SportsPro</p>
+            <nav class="collapse navbar-collapse">
+                <div class="navbar-nav me-auto">
+                    <a class="nav-item nav-link"
+                    asp-controller="Home" asp-action="Index">Home</a>
+
+                    <a class="nav-item nav-link"
+                    asp-controller="Product" asp-action="List">Products</a>
+
+                    <a class="nav-item nav-link"
+                    asp-controller="Technician" asp-action="List">Technicians</a>
+
+                    <a class="nav-item nav-link"
+                    asp-controller="Customer" asp-action="List">Customers</a>
+
+                    <a class="nav-item nav-link"
+                    asp-controller="Incident" asp-action="List">Incidents</a>
+
+                    <a class="nav-item nav-link"
+                    asp-controller="Registration" asp-action="Select">Registrations</a>
+
+                    <a class="nav-item nav-link"
+                    asp-controller="Home" asp-action="About">About</a>
+                </div>
+            </nav>
+        </div>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <span class="far fa-copyright"></span> 2022 - SportsPro
+    </footer>  
+</body>
+</html>

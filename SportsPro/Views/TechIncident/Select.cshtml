@@ -1,0 +1,10 @@
+﻿@model TechIncidentViewModel
+
+<h1 class="fw-bold pb-1 mb-2">Technician</h1>
+
+<form action="Select" method="post" class="mb-2">
+    <select asp-for="Id" asp-items="@(new SelectList(Model.Technicians, "Id", "Name"))" class="form-select mb-2"></select>
+    <button type="submit" class="btn btn-primary">Select</button>
+</form>
+
+<temp-message class="text-danger"></temp-message>

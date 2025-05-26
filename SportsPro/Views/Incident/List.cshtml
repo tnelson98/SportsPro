@@ -1,0 +1,40 @@
+﻿@model IncidentViewModel
+@{
+    ViewData["Title"] = "Incident List";
+}
+
+<div class="container">
+    <div class="row">
+        <h1 class="fw-bold pb-1 mb-2">@ViewBag.Name</h1>
+    </div>
+    <form asp-action="List" method="post" class="nav nav-pills">
+        <button filter=@Model.Filter type="submit" name="Filter" value="all">All Incidents</button>
+        <button filter=@Model.Filter type="submit" name="Filter" value="unassigned">Unassigned Incidents</button>
+        <button filter=@Model.Filter type="submit" name="Filter" value="open">Open Incidents</button>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr><th>Title</th><th>Customer</th><th>Product</th><th>Date Opened</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var incident in Model.Incidents)
+            {
+                <tr>
+                    <td>@incident.Title</td>
+                    <td>@incident.Customer</td>
+                    <td>@incident.Product</td>
+                    <td>@incident.OpenDate</td>
+                    <td>
+                        <a asp-controller="Incident" asp-action="Edit"
+                           asp-route-id="@incident.Id" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Incident" asp-action="Delete"
+                           asp-route-id="@incident.Id" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-controller="Incident" asp-action="Add" class="btn btn-primary">Add Incident</a>
+</div>

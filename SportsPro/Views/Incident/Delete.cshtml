@@ -1,0 +1,15 @@
+﻿@model IncidentModel
+@{
+    ViewData["Title"] = "Delete Incident";
+}
+<partial name="_ScriptsPartial" />
+
+<h1>Confirm Deletion</h1>
+<h3>@Model.Title</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Incident" asp-action="List" class="btn btn-outline-secondary">Cancel</a>
+</form>

@@ -1,0 +1,17 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<partial name="_ScriptsPartial" />
+
+<h1>Confirm Deletion</h1>
+<h3>@Model.Name</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="ProductModelId" />
+    <input type="hidden" asp-for="Name" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Product" asp-action="List" class="btn btn-outline-secondary">Cancel</a>
+</form>
